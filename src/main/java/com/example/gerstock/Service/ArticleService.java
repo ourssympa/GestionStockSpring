@@ -25,4 +25,8 @@ public class ArticleService {
     public void deleteArticle(int id){
         articleRepository.deleteById(id);
     }
+
+    public void Approvisionner(int id, int qte){
+        articleRepository.updateStockArticle(id,qte);
+    }
 }

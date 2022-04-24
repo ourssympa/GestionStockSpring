@@ -13,40 +13,30 @@
         <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>libellé</th>
-                <th>catégorie</th>
-                <th>prix</th>
-                <th>Quantité en stock</th>
-                <th>Quantité Seuil</th>
-                <th>Date de création</th>
-                <th>Actions</th>
+                <th>Date Approvisionnement</th>
+                <th>produit</th>
+                <th>Quantité approvisionnée</th>
+                <th>Action</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr th:each="article:${articles}">
-                <td th:text="${article.libelle}"/>
-                <td th:text="${article.categorie.designation}"></td>
-                <td th:text="${article.prix}"/>
-                <td th:text="${article.qteStock}"/>
-                <td th:text="${article.qteSeuil}" class="text text-danger"/>
-                <td th:text="${article.dateCreation}"/>
-                <td class="d-flex justify-content-between">
-                    <a th:href="@{/article/edit/{id}(id=${article.id})}" class="btn btn-primary btn-lg">Modifier </a>
-                    <a th:href="@{/article/delete/{id}(id=${article.id})}" class="btn btn-danger btn-lg">Supprimer </a>
-                    <a th:href="@{/approvisionnement/approvisionner/{id}(id=${article.id})}" class="btn btn-success btn-lg">Approvisionner</a>
+            <tr th:each="approvisionnement:${approvisionnements}">
+                <td th:text="${approvisionnement.dateAppro}"/>
+                <td th:text="${approvisionnement.article.libelle}"></td>
+                <td th:text="${approvisionnement.qteAppro}"/>
+                <td class="d-flex justify-content-center">
+                    <a th:href="@{/approvisionnement/edit/{id}(id=${approvisionnement.id})}" class="btn btn-primary btn-lg">Modifier </a>
+                    <a th:href="@{/approvisionnement/delete/{id}(id=${approvisionnement.id})}" class="btn btn-danger btn-lg">Supprimer </a>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
-                <th>libellé</th>
-                <th>catégorie</th>
-                <th>prix</th>
-                <th>Quantité en stock</th>
-                <th>Quantité Seuil</th>
-                <th>Date de création</th>
-                <th>Actions</th>
+                <th>Date Approvisionnement</th>
+                <th>produit</th>
+                <th>Quantité approvisionnée</th>
+                <th>Action</th>
             </tr>
             </tfoot>
         </table>
