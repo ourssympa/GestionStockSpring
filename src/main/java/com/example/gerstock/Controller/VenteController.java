@@ -47,6 +47,39 @@ public class VenteController {
         model.addAttribute("total",total);
         return "vente/index";
     }
+    @GetMapping("/print/{ref}")
+    public String print(@PathVariable("ref") String ref,Model model){
+        model.addAttribute("ventes",venteService.listeVente(ref));
+        int total=0;
+        for(int i =0;i<venteService.listeVente(ref).size();i++)
+        {
+            total+=venteService.listeVente(ref).get(i).getTotal();
+        }
+        model.addAttribute("total",total);
+        return "vente/print";
+    }
+    @GetMapping("/recu/{ref}")
+    public String recu(@PathVariable("ref") String ref,Model model){
+        model.addAttribute("ventes",venteService.listeVente(ref));
+        int total=0;
+        LocalDate date=venteService.listeVente(ref).get(0).getDate();
+        for(int i =0;i<venteService.listeVente(ref).size();i++)
+        {
+            total+=venteService.listeVente(ref).get(i).getTotal();
+        }
+        model.addAttribute("total",total);
+        model.addAttribute("date",date);
+        return "vente/recu";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id")int id){
+        Vente vente = venteService.oneVente(id);
+        articleService.Approvisionner(vente.getArticleId(), vente.getQte());
+        String ref = vente.getRef();
+        venteService.delete(id);
+        return "redirect:/vente/ventes/"+ref;
+    }
 
     public String gen(){
         Random rand = new Random();
