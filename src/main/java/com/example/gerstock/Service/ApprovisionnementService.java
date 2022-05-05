@@ -2,10 +2,12 @@ package com.example.gerstock.Service;
 
 import com.example.gerstock.Model.Approvisionnement;
 import com.example.gerstock.Model.Article;
+import com.example.gerstock.Model.Vente;
 import com.example.gerstock.Repository.ApprovisionnemantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -29,5 +31,9 @@ public class ApprovisionnementService {
     }
     public List<Article> listeAapprovisionner(){
       return approvisionnemantRepository.listeAApprovisionner();
+    }
+
+    public List<Approvisionnement> approvisionnementEtat(LocalDate date1, LocalDate date2){
+        return approvisionnemantRepository.approvisionnementEtat(date1,date2);
     }
 }

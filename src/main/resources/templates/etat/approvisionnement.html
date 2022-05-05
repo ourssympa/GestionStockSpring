@@ -9,9 +9,61 @@
 </head>
 <body>
 <section  layout:fragment="text">
-    <h1 class="m-0">Approvisionnement</h1>
+<h1 class="m-0">Liste Des Approvisionnements</h1>
 </section>
 <section layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3 th:text="${i}"/>
+
+                    <p>Nombre d'Approvissionnement :</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ./col -->
+        <!-- ./col -->
+        <!-- ./col -->
+
+        <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3 th:text="${date2}"/>
+
+                    <p>Etat du :</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3 th:text="${date1}"/>
+
+                    <p>Au :</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
@@ -19,7 +71,7 @@
                 <th>Date Approvisionnement</th>
                 <th>produit</th>
                 <th>Quantité approvisionnée</th>
-                <th>Action</th>
+
 
             </tr>
             </thead>
@@ -28,10 +80,7 @@
                 <td th:text="${approvisionnement.dateAppro}"/>
                 <td th:text="${approvisionnement.article.libelle}"></td>
                 <td th:text="${approvisionnement.qteAppro}"/>
-                <td class="d-flex justify-content-center">
-                    <a th:href="@{/approvisionnement/edit/{id}(id=${approvisionnement.id})}" class="btn btn-primary btn-lg">Modifier </a>
-                    <a th:href="@{/approvisionnement/delete/{id}(id=${approvisionnement.id})}" class="btn btn-danger btn-lg">Supprimer </a>
-                </td>
+
             </tr>
             </tbody>
             <tfoot>
@@ -39,7 +88,6 @@
                 <th>Date Approvisionnement</th>
                 <th>produit</th>
                 <th>Quantité approvisionnée</th>
-                <th>Action</th>
             </tr>
             </tfoot>
         </table>
@@ -64,12 +112,11 @@
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
-      "searching": false,
+      "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false,

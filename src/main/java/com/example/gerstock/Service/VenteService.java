@@ -28,4 +28,7 @@ public class VenteService {
     public List<Vente> venteEtat(LocalDate date1,LocalDate date2){
         return venteRepository.venteEtat(date1,date2);
     }
+    public List<Vente> ToutesVente(){
+        return venteRepository.findAll();
+    }
 }

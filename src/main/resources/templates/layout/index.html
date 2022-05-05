@@ -49,11 +49,9 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a th:href="@{/}" class="nav-link">Accueil</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+
     </ul>
 
   </nav>
@@ -62,15 +60,19 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <span class="brand-text font-weight-light">Gestion de Stock</span>
-    </a>
+<!--    <section  layout:fragment="text">-->
+<!--      <a class="brand-link">-->
+<!--        <span class="brand-text font-weight-light">Gestion de Stock</span>-->
+<!--      </a>-->
+<!--    </section>-->
+
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
+          <i class="nav-icon fas fa-tachometer-alt"></i>
           <a href="#" class="d-block">Menu :</a>
         </div>
       </div>
@@ -193,6 +195,13 @@
                 </a>
               </li>
 
+              <li class="list-group-item ">
+                <a href="" class="nav-link" data-toggle="modal" data-target="#ModalCenter2">
+                  <i class="fas fa-print"></i>
+                  <p>Les Approvisionnement Par Période:</p>
+                </a>
+              </li>
+
             </ul>
           </li>
 
@@ -211,7 +220,9 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Gestion de Stock</h1>
+            <section  layout:fragment="text">
+                      <h1 class="m-0">Gestion de Stock</h1>
+                  </section>
           </div><!-- /.col -->
           <!-- /.col -->
         </div><!-- /.row -->
@@ -291,6 +302,57 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="ModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Approvisionnement du: </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+         <form th:action="@{/etat/approvisionnement}" method="post">
+
+          <div class="form-group">
+            <label >Etat du : </label>
+            <div class="form-group">
+              <label>Date:</label>
+              <div >
+                <input name="date1" type="date" class="form-control" />
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label >Au : </label>
+            <div class="form-group">
+              <label>Date:</label>
+              <div >
+                <input name="date2" type="date" class="form-control"/>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-10 form-ggroup">
+            <button type="submit" class="btn btn-success btn-block">Liste Approvisionnement </button>
+          </div>
+
+         </form>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- jQuery -->
 <!--<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>-->
 <!--&lt;!&ndash; jQuery UI 1.11.4 &ndash;&gt;-->
@@ -354,6 +416,8 @@
 <script th:src="@{/admin/dist/js/adminlte.min.js}"></script>
 <!-- AdminLTE for demo purposes -->
 <script th:src="@{/admin/dist/js/demo.js}"></script>
+
+
 
 <section  layout:fragment="script">
 

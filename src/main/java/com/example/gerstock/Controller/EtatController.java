@@ -1,5 +1,6 @@
 package com.example.gerstock.Controller;
 
+import com.example.gerstock.Model.Approvisionnement;
 import com.example.gerstock.Model.Date;
 import com.example.gerstock.Model.Vente;
 import com.example.gerstock.Service.ApprovisionnementService;
@@ -38,5 +39,13 @@ public class EtatController {
         model.addAttribute("date2",date1);
         return "etat/vente";
     }
-
+    @PostMapping("/approvisionnement")
+    public String approEtat(@ModelAttribute("date")Date date, Model model){
+        List<Approvisionnement> liste = approvisionnementService.approvisionnementEtat(date.getDate1(),date.getDate2());
+      model.addAttribute("approvisionnements",liste);
+      model.addAttribute("i",liste.size());
+      model.addAttribute("date1",date.getDate1());
+      model.addAttribute("date2",date.getDate2());
+        return "etat/approvisionnement";
+    }
 }
